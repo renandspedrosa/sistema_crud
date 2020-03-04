@@ -1,0 +1,29 @@
+.fa-sign-out{
+    color: rgb(255, 255, 255);
+}
+ul{
+    list-style-type: none;
+}
+a#subper{
+    text-decoration: none;
+    color: rgb(65, 65, 65);
+}
+a#subper:hover{
+    color: rgb(202, 0, 0);
+}
+a#perfil{
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-family:'Open Sans', sans-serif;
+    text-decoration: none;
+    
+}
+a{
+    padding: 10px;
+}
+.modal-content {
+   color: black;
+}
+.cadIcon{
+    color: black;
+}
