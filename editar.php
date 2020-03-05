@@ -36,7 +36,7 @@ $sql = "select * from usuario where user_id ='$id'";
 
 $result = Conexao::conecta()->query($sql)->fetchAll()[0];
 
-$home = "http://localhost/sistema/";
+$home = "http://localhost/sistema_crud/";
 
 ?>
 

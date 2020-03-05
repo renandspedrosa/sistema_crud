@@ -17,7 +17,7 @@ require_once 'acoes/conexao.php';
 require_once 'acoes/hash.php';
 
 session_start();
-$home = "http://localhost/sistema/";
+$home = "http://localhost/sistema_crud/";
 $login = Safe::decode($_SESSION['userNome'], date('DMYH'), true);
 $senha = $_SESSION['userPass'];
 ?>
