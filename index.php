@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="estilo/style.css">
     <title>Sistema</title>
 </head>
-teste
 <body class="p-3 mb-2 bg-info text-white">
 
     <form   class="shadow p-3 mb-5 bg-white rounded" id="formlogin" action="login.php" method="POST">
