@@ -67,39 +67,6 @@ function verificaSenha(){
     })
 }
 </script>
-
-<!-- <script>
-function mudarSenha(){
-    var antSenha = document.getElementById('antSenha').value.trim()
-    var senha =  document.getElementById('senha').value.trim()
-
-    if(antSenha == senha){
-        return alert('A senhas nao podem ser a mesma','')
-    }else{
-        $.ajax({
-            url:'<?=$home?>acoes/updateSenha.php', // Send
-            type:'POST', // Back
-            dataType:'JSON',//Back
-            data://Send and Back
-            {
-            action: 'senha',
-            senha : $('#senha').val()
-            },
-            //aqui
-            success:function(data){//Did Back
-                if(data.status == true){
-                    swal (data.msg,'') 
-                }else{
-                    swal (data.msg,'')
-                }
-            },
-            error:function(e){//nem foi deu erro de conexao ou url
-                alert('Erro ao se comunicar com o servidor.')
-            }
-        })
-    }
-}
-</script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

@@ -22,6 +22,7 @@ if(isset($_POST['btn-senha'])){
     $stmt = Conexao::conecta()->prepare($sql);
     if($stmt->execute()){
      $_SESSION ['mensagem'] = 'Atualizado com sucesso';
+     $_SESSION['userPass'] = Safe::encode($senha, date('DMYH'), true);
      header('Location: ../home.php');
     }else{
       $_SESSION ['mensagem'] = 'Erro ao atualizar';
