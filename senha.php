@@ -20,23 +20,25 @@ session_start();
 $home = "http://localhost/sistema_crud/";
 $login = Safe::decode($_SESSION['userNome'], date('DMYH'), true);
 $senha = $_SESSION['userPass'];
+
+$home = "http://localhost/sistema_crud/";
 ?>
 
 <body class="p-3 mb-2 bg-info text-white">
     <h1> Mudar senha </h1>
-    <form   class="shadow p-3 mb-5 bg-white rounded" method="POST">
+    <form   class="shadow p-3 mb-5 bg-white rounded" method="POST" action="acoes/updateSenha.php">
         <div class="form-group">
             <input  type="password" onfocusout="verificaSenha()" id="antSenha" class="form-control"required="">
             <small class="form-text text-muted">Digite a senha antiga</small>
         </div>
         <div class="form-group">
-            <input type="password"  id="senha" class="form-control" required="">
+            <input type="password"  id="senha" name="senha" class="form-control" required="">
             <small class="form-text text-muted">Digite a nova senha</small>
         </div>
         <div class="form-group">
             <input type="password"  onfocusout="validarSenha()"  id="senha1" class="form-control" required="">
             <small class="form-text text-muted">Confirmar a nova senha</small></br>   
-            <button type="submit"  class="btn btn-primary" onclick="mudarSenha()">Salvar</button>
+            <button type="submit" name="btn-senha" class="btn btn-primary">Salvar</button>
             <input type="button" class="btn btn-danger"  onclick="window.location='home.php'" value="Cancelar">
         </div>
     </form>
@@ -66,7 +68,7 @@ function verificaSenha(){
 }
 </script>
 
-<script>
+<!-- <script>
 function mudarSenha(){
     var antSenha = document.getElementById('antSenha').value.trim()
     var senha =  document.getElementById('senha').value.trim()
@@ -75,7 +77,7 @@ function mudarSenha(){
         return alert('A senhas nao podem ser a mesma','')
     }else{
         $.ajax({
-            url:'acoes/updateSenhas.php', // Send
+            url:'<?=$home?>acoes/updateSenha.php', // Send
             type:'POST', // Back
             dataType:'JSON',//Back
             data://Send and Back
@@ -84,10 +86,9 @@ function mudarSenha(){
             senha : $('#senha').val()
             },
             //aqui
-            alert('teste'),
             success:function(data){//Did Back
                 if(data.status == true){
-                    swal (data.msg,'')  
+                    swal (data.msg,'') 
                 }else{
                     swal (data.msg,'')
                 }
@@ -98,7 +99,7 @@ function mudarSenha(){
         })
     }
 }
-</script>
+</script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
