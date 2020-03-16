@@ -1,5 +1,5 @@
 <?php
-
+$captch = false;
 if (isset($_SESSION['mensagem'])) {
 	switch ($_SESSION['mensagem']){
 		case "Atualizado com sucesso":
@@ -25,5 +25,8 @@ if (isset($_SESSION['mensagem'])) {
 	} 
 }
 $_SESSION['mensagem'] = null;
+
+
+
 ?>
 

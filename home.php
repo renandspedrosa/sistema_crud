@@ -144,7 +144,7 @@ function pdf(){
         <div class="form-row">
             <div class="form-group col-md-12">
                 <label>CPF:  </label>
-                <input type="text" class="form-control" name="cpf" id="cpf" placeholder="Ex: Fulano da silva" required>
+                <input type="text" class="form-control" name="cpf"  id="cpf" onblur="return verificarCPF(this.value)" placeholder="Ex: Fulano da silva" required>
             </div>
         </div>
         <div class="form-row">
@@ -197,7 +197,7 @@ function pdf(){
         <div class="form-row">
             <div class="form-group col-md-12">
                 <label>CPF:  </label>
-                <input type="text" class="form-control" name="cpfEditar" id="cpfEditar" placeholder="Ex: Fulano da silva" required>
+                <input type="text" class="form-control" name="cpfEditar" id="cpfEditar" onblur="return verificarCPF(this.value)" placeholder="Ex: Fulano da silva" required>
             </div>
         </div>
         <div class="form-row">
@@ -332,9 +332,52 @@ function editarCliente(){
   })
 }
 
-
+function verificarCPF(c){
+    var i;
+    s = c;
+    var c = s.substr(0,9);
+    var dv = s.substr(9,2);
+    var d1 = 0;
+    var v = false;
+ 
+    for (i = 0; i < 9; i++){
+        d1 += c.charAt(i)*(10-i);
+    }
+    if (d1 == 0){
+       swal("CPF Inválido")
+        v = true;
+        document.getElementById('cpf').value = ""
+        document.getElementById('cpfEditar').value = ""
+        return false;
+    }
+    d1 = 11 - (d1 % 11);
+    if (d1 > 9) d1 = 0;
+    if (dv.charAt(0) != d1){
+        swal("CPF Inválido")
+        v = true;
+        document.getElementById('cpf').value = ""
+        document.getElementById('cpfEditar').value = ""
+        return false;
+    }
+ 
+    d1 *= 2;
+    for (i = 0; i < 9; i++){
+        d1 += c.charAt(i)*(11-i);
+    }
+    d1 = 11 - (d1 % 11);
+    if (d1 > 9) d1 = 0;
+    if (dv.charAt(1) != d1){
+        swal("CPF Inválido")
+        v = true;
+        document.getElementById('cpf').value = ""
+        document.getElementById('cpfEditar').value = ""
+        return false;
+    }
+    if (!v) {
+       return true
+    }
+}
 </script>
-
 <!-- icons -->
 <script src="https://use.fontawesome.com/19a91ab86c.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -351,7 +394,12 @@ function editarCliente(){
 <script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
 <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
 <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/export/bootstrap-table-export.min.js"></script>
-
+<script src="https://www.google.com/recaptcha/api.js?render=_reCAPTCHA_site_key"></script>
+<script>
+grecaptcha.ready(function() {
+    grecaptcha.execute('reCAPTCHA_site_key', {action: 'index.php'});
+});
+</script>
 </body>
 </html>
 
